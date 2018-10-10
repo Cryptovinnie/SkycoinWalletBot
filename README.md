@@ -55,12 +55,12 @@ Next we want to connect to our database. We do that by typing the following.
 
 `\c skycoinbalancesDB`
 
-`CREATE TABLE users (`
- ` id SERIAL,`
- ` telegram_username STRING PRIMARY KEY, `
- ` public_wallet TEXT,  `
- ` public_key TEXT, `
- ` private_key TEXT `
-`);` 
+`CREATE TABLE users (
+  id SERIAL,
+  telegram_username STRING PRIMARY KEY,
+  public_wallet TEXT,
+  public_key TEXT,
+  private_key TEXT 
+);`
 
 
