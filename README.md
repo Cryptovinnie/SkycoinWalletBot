@@ -20,7 +20,7 @@ Exit out of the PostgreSQL prompt by typing:
 
 `$ \q`
 
-# Enabling Postgres command line tools #
+## Enabling Postgres command line tools ##
 If you are using the default terminal, you are going to want to modify the file at ~/.bash_profile. If you are using something like Oh My Zsh you are going to want to modify the file ~/.zshrc.
 
 To edit this file you likely need to open it via the terminal, so open your terminal and type `nano ~/.bash_profile` 
@@ -38,3 +38,8 @@ You should get the following output.
 
 `psql (9.6.0)
 Type "help" for help.`
+
+## Creating a Postgres database ##
+The first thing we need to do is connect to Postgres with our postgres role. To do this we want to type the following into our terminal.
+
+psql -U postgres
