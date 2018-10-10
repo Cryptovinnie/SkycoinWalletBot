@@ -114,8 +114,20 @@ If message to bot contains "/wallet:"
 Get Telegram username and unique chatID!!! 
 
 Split String after Semi-colon (:)  
+eg. "/wallet:1234567890skyaddress" 
+split too "1234567890skyaddress" 
 
-Connect to Skycoin-CLI and get wallet balance. return this in a message via TelegramBot. 
+Connect to Skycoin-CLI and get wallet balance. return this in a message via TelegramBot.
+
+```
+address:1234567890skyaddress
+balance: 1000 SKY 
+coinhours: 100K
+```
+
+
+
+
 ### /createaddress ###
 `createaddress := s.HasPrefix(Message, "/createaddress") //If Message starts with createaddress`  
 
@@ -140,15 +152,39 @@ Do same as createaddress.
 `sendsky := s.HasPrefix(Message, "/sendsky")//If Message starts with sendsky`  
 
 If message to bot contains "/sendsky"  
-Get Telegram username and unique chatID!!!  
-Message in format "/sendsky 100 @Username"  
+eg `/sendsky 100 @V1nnie` message sent from @Synth
 
-Check SQL Database for Telegram username.  
-Connect to Skycoin-CLI and check spendable balance, Save this as a variable.  
-Split String up get @Username address and int amount eg `100`, Check this address in SQL database for wallet address, If no address exists do `/createaddress` 
+Get Telegram username and unique chatID!!!  
+
+```
+- telegram_username = @Synth
+- chatId = 1111111
+```
+
+Message in format "/sendsky 100 @V1nnie"  
+
+Check SQL Database for sender Telegram username. -@Synth
+`
+id | telegram_username | public_wallet | public_key |    private_key   
+----+-------------------+---------------+------------+----------------  
+  1 |    @Synth   ✅    | pubwallet123  |  pubkey123 |    privkey123  
+  2 |    @V1nnie   ❗   | V1nnieaddress |  V1nniepub |    V1nniepriv
+ ```  
+ 
+Connect to Skycoin-CLI and check spendable balance, Save this as a variable.
+
+var address = pubwallet123
+var SPENDABLE = 1000
+
+Split String up get @Username address and int amount eg `100`, -@V1nnie❗
+Check this address in SQL database for wallet address, If no address exists do `/createaddress` 
 
 
 Once @Username exists in SQL Database, Send int amount to @Username Public address  
+`100 SKY from @synth (pubwallet123) to @V1nnie (V1nnieaddress)`
+
+Connect to Skycoin-CLI "sendto" (entercli command arg here) send from address @synth (publickey123) to @V1nnie
+
 Then send confirmation to Telegram user who initiated transaction + if chatID exists in SQL Database send Verification message. 
 
 
