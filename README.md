@@ -84,6 +84,19 @@ If you would like to see the data you just inserted into your table, as well as 
   1 |    @testing       | pubwallet123  |  pubkey123 |    privkey123  
   
  ```  
+ 
+ ## Setting up config file ## 
+ 
+ In SkycoinWalletBot.go under `func main()` please enter telegram bot token.
+
+ ```golang
+ func main() {
+        //Telegram messenger
+        bot, err := tgbotapi.NewBotAPI("TELEGRAM-BOT-TOKEN-HERE")
+        if err != nil {
+                log.Panic(err)
+        }
+ ```
 
 
 
