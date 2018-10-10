@@ -1,6 +1,18 @@
 # Skycoin Wallet Bot
 
-Install PostGreSQL
+The idea is to create and inline telegram bot that can be used within telegram group conversations, with hooks into telegram cli to send tips to other users by simply typing `/sendsky 100 @V1nnie` initially this bot will be limited to small tips 0.1SKY or 1000 drops. 
+
+At the begining this will be similar to how a centralized wallet works without needing users to enter private keys, but will progress to being controlled entirely by end users. 
+
+with functionalty that is possible from the SKYCOIN-CLI such as 
+
+Generate wallet
+Check balances 
+Send to Multiple address
+etc
+
+
+## Install PostGreSQL ##
 
 ```
 $ sudo apt-get update
