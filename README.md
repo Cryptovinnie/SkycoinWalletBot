@@ -1,6 +1,6 @@
 # SkycoinWalletBot
 
-Install PostGreSQL
+Install PostGreSQL `n
 `sudo apt-get install postgresql postgresql-contrib`
 
 Switch over to the postgres account on your server by typing:
