@@ -2,11 +2,11 @@ package main
 
 import s "strings"
 import (
-  			"database/sql"
-   			"fmt"
-   			"log"
-   			"gopkg.in/telegram-bot-api.v4"
- 		 _ "github.com/lib/pq"
+  	"database/sql"
+   	"fmt"
+   	"log"
+   	"gopkg.in/telegram-bot-api.v4"
+      _ "github.com/lib/pq"
 )
 var p = fmt.Println
 
@@ -15,7 +15,7 @@ const (
   port     = 5432
   user     = "postgres"
   password = "masterpassword"
-  dbname   = "skycoinbalances"
+  dbname   = "skycoinbalancesDB"
 )
 
 func main() {
@@ -49,86 +49,85 @@ func main() {
                                 sendsky := s.HasPrefix(Message, "/sendsky")//If Message starts with createaddress
 
 
-			switch Wallet {
-				case true: //If Message starts with wallet: then do this
-								p("Message Switch worked: ", s.HasPrefix(Message, "wallet:"))
-								UserName := update.Message.From.UserName
-								p("Username is ", UserName)
-								split := s.SplitAfter(Message, ":")
+	switch Wallet {
+	case true: //If Message starts with wallet: then do this
+		p("Message Switch worked: ", s.HasPrefix(Message, "wallet:"))
+		UserName := update.Message.From.UserName
+		p("Username is ", UserName)
+		split := s.SplitAfter(Message, ":")
 	
-								p("Split message ", split)
-								p("Split message1 ", split[0])
-								p("Split message2 ", split[1])
-								p("Len: ", len(Message))
-								p()
+		p("Split message ", split)
+		p("Split message1 ", split[0])
+		p("Split message2 ", split[1])
+		p("Len: ", len(Message))
+		p()
 	
-								address := split[1]
-								if address != ""{
-									response := fmt.Sprintf("https://explorer.skycoin.net/app/address/%s", address)
-									p("response ", response)
-									msg := tgbotapi.NewMessage(update.Message.Chat.ID, response)
-									bot.Send(msg)
-									}
+		address := split[1]
+		if address != ""{
+			response := fmt.Sprintf("https://explorer.skycoin.net/app/address/%s", address)
+			p("response ", response)
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, response)
+			bot.Send(msg)
+			}
 
-									default: // If none of the above options do this.
-                                p("Message Switch not worked: ", s.HasPrefix(Message, "wallet"))
-                                //End of telegram messenger
-                                }
+	default: // If none of the above options do this.
+        p("Message Switch not worked: ", s.HasPrefix(Message, "wallet"))
+    }
 
-			switch createaddress {
-                case true: //If message starts with createaddress:
-                                p("createaddress Switch worked: ", s.HasPrefix(Message, "createaddress"))
-                                UserName := update.Message.From.UserName
-                                 p("Username is ", UserName)
+	switch createaddress {
+        case true: //If message starts with createaddress:
+                       p("createaddress Switch worked: ", s.HasPrefix(Message, "createaddress"))
+                       UserName := update.Message.From.UserName
+                       p("Username is ", UserName)
 
-                                        //Check database for userid existing.
-                                        psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
-                                        "password=%s dbname=%s sslmode=disable",
-                                        host, port, user, password, dbname)
-                                        db, err := sql.Open("postgres", psqlInfo)
-										if err != nil { 
-											panic(err) 
-										}
-										defer db.Close()
+                       //Check database for userid existing.
+                        psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
+                        "password=%s dbname=%s sslmode=disable",
+                        host, port, user, password, dbname)
+                        db, err := sql.Open("postgres", psqlInfo)
+				if err != nil { 
+					panic(err) 
+					}
+			defer db.Close()
 
-                                                                sqlStatement := `SELECT id, public_wallet FROM users WHERE telegram_username=$1;`
-                                                                        var public_wallet string
-                                                                        var telegram_username string
+                        sqlStatement := `SELECT id, public_wallet FROM users WHERE telegram_username=$1;`
+                                     var public_wallet string
+                                     var telegram_username string
 
-                                                                row := db.QueryRow(sqlStatement, UserName)
-                                                                switch err := row.Scan(&telegram_username, &public_wallet); err {
+                                     row := db.QueryRow(sqlStatement, UserName)
+                                     switch err := row.Scan(&telegram_username, &public_wallet); err {
 
-                                                                        case sql.ErrNoRows:
-                                                                        fmt.Println("No rows were returned!") //User was not found in DB so create address
+                                     case sql.ErrNoRows:
+                                     fmt.Println("No rows were returned!") //User was not found in DB so create address
 
-                                                                        // Run address creation script here
-                                                                        //Connect to Skycoin-CLI and run address_gen2.go
-                                                                        //Save output to SQL database.
-                                                                        AddrCreated := "abcdefghijklmnop"// testing AddrCreated
+                                     // Run address creation script here
+                                     //Connect to Skycoin-CLI and run address_gen2.go
+                                     //Save output to SQL database.
+                                     AddrCreated := "abcdefghijklmnop"// testing AddrCreated
 																		
-																		//sqlinfo bellow
-																		psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
-																		"password=%s dbname=%s sslmode=disable",
-																		host, port, user, password, dbname)
-																		db, err := sql.Open("postgres", psqlInfo)
-																				if err != nil {
-																				panic(err)
-																				}
-																				defer db.Close()
+				//sqlinfo bellow
+				psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
+						"password=%s dbname=%s sslmode=disable",
+						host, port, user, password, dbname)
+					db, err := sql.Open("postgres", psqlInfo)
+							if err != nil {
+							panic(err)
+							}
+							defer db.Close()
 
 
-																		// Save created wallet to SQL DB
-																		sqlStatement := `
-																				INSERT INTO users (telegram_username, public_wallet, public_key, private_key)
-																				VALUES ($1, $2, $3, $4)
-																				RETURNING id`
-																		id := 0
-																		err = db.QueryRow(sqlStatement, UserName, AddrCreated, "Publickey1", "Privatekey1").Scan(&id)
-																		if err != nil {
-																				panic(err)
-																		}
-																		fmt.Println("New record ID is:", id)
-																		//End of SQL info. Still in For Updates loop under wallet: switch.
+								// Save created wallet to SQL DB
+								sqlStatement := `
+								INSERT INTO users (telegram_username, public_wallet, public_key, private_key)
+								VALUES ($1, $2, $3, $4)
+								RETURNING id`
+									id := 0
+								err = db.QueryRow(sqlStatement, UserName, AddrCreated, "Publickey1", "Privatekey1").Scan(&id)
+								if err != nil {
+								panic(err)
+								}
+								fmt.Println("New record ID is:", id)
+								//End of SQL info. Still in For Updates loop under wallet: switch.
 
 
 																		//send message back
