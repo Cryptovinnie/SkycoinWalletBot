@@ -1,4 +1,4 @@
-# SkycoinWalletBot
+# Skycoin Wallet Bot
 
 Install PostGreSQL
 
@@ -85,7 +85,7 @@ If you would like to see the data you just inserted into your table, as well as 
   
  ```  
  
- ## Setting up config file ## 
+ ## Configuration ## 
  
  In Telegrambot.go under `func main()` please enter telegram bot token.
 
@@ -98,7 +98,20 @@ If you would like to see the data you just inserted into your table, as well as 
         }
  ```
  
+ ## Different Commands ## 
+ If Bot receives any messages starting with the bellow they will be linked to a command. 
  
+ ```golang
+ Message := update.Message.Text //Message received by bot
+ p("Message from telegram: ", Message) //Print message received
+
+Wallet := s.HasPrefix(Message, "/wallet:") //If Message starts with wallet
+createaddress := s.HasPrefix(Message, "/createaddress") //If Message starts with createaddress
+getaddress := s.HasPrefix(Message, "/getaddress")//If Message starts with createaddress
+sendsky := s.HasPrefix(Message, "/sendsky")//If Message starts with createaddress
+``` 
+
+
 
 
 
