@@ -11,11 +11,14 @@ Check balances
 Send to Multiple address
 etc
 
-## Install and Build ## 
+## Dependencies/ Install and Build ## 
 ```
 mkdir -p $GOPATH/src/github.com/Cryptovinnie
 cd $GOPATH/src/github.com/Cryptovinnie
 git clone https://github.com/Cryptovinnie/SkycoinWalletBot.git
+```
+```
+go get github.com/spf13/viper
 ```
 
 ## Install PostGreSQL ##
