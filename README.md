@@ -57,10 +57,20 @@ Next we want to connect to our database. We do that by typing the following.
 
 `CREATE TABLE users (
   id SERIAL,
-  telegram_username STRING PRIMARY KEY,
-  public_wallet TEXT,
-  public_key TEXT,
-  private_key TEXT 
+  telegram_username TEXT UNIQUE NOT NULL,
+  public_wallet TEXT UNIQUE NOT NULL,
+  public_key TEXT UNIQUE NOT NULL,
+  private_key TEXT UNIQUE NOT NULL 
 );`
+
+Next enter a test entry into DB 
+`psql -U postgres -d calhounio_demo`  
+`INSERT INTO users (id, telegram_username, public_wallet, public_key, private_key)`
+`VALUES (0, '@testing', 'pubwallet123', 'pubkey123', 'privkey123');`
+You should see the output `INSERT 0 1` after inserting this row.
+
+
+
+
 
 
