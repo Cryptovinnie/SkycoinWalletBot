@@ -3,7 +3,7 @@
 Install PostGreSQL
 
 ```
-$ sudo apt-get update`
+$ sudo apt-get update
 $ sudo apt-get install postgresql postgresql-contrib
 ```
 
@@ -87,7 +87,7 @@ If you would like to see the data you just inserted into your table, as well as 
  
  ## Setting up config file ## 
  
- In SkycoinWalletBot.go under `func main()` please enter telegram bot token.
+ In Telegrambot.go under `func main()` please enter telegram bot token.
 
  ```golang
  func main() {
@@ -97,6 +97,8 @@ If you would like to see the data you just inserted into your table, as well as 
                 log.Panic(err)
         }
  ```
+ 
+ 
 
 
 
