@@ -105,6 +105,8 @@ If you would like to see the data you just inserted into your table, as well as 
  Message := update.Message.Text //Message received by bot
  p("Message from telegram: ", Message) //Print message received
 ```
+### /wallet ###
+
 `Wallet := s.HasPrefix(Message, "/wallet:") //If Message starts with wallet:`  
 
 If message to bot contains "/wallet:"  
@@ -114,7 +116,7 @@ Get Telegram username and unique chatID!!!
 Split String after Semi-colon (:)  
 
 Connect to Skycoin-CLI and get wallet balance. return this in a message via TelegramBot. 
-
+### /createaddress ###
 `createaddress := s.HasPrefix(Message, "/createaddress") //If Message starts with createaddress`  
 
 If message to bot contains "/createaddress"
@@ -123,11 +125,13 @@ Search SQL Database to see if Username already exists.
 If Username is in DB send back message with users public address 
 If userdoes not exist, Connect to Skycoin-CLI, GenerateKeypair, then Save to SQL DB 
 
+### /getaddress ###
 `getaddress := s.HasPrefix(Message, "/getaddress")//If Message starts with getaddress`  
 
 If message to bot contains "/getaddress"
 Do same as createaddress. 
 
+### /sendsky ### 
 `sendsky := s.HasPrefix(Message, "/sendsky")//If Message starts with sendsky`  
 
 If message to bot contains "/sendsky"  
