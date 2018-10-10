@@ -120,10 +120,15 @@ Connect to Skycoin-CLI and get wallet balance. return this in a message via Tele
 `createaddress := s.HasPrefix(Message, "/createaddress") //If Message starts with createaddress`  
 
 If message to bot contains "/createaddress"
-Get Telegram username and unique chatID!!!
+  
+Get Telegram username and unique chatID!!!  
+ 
 Search SQL Database to see if Username already exists. 
+  
 If Username is in DB send back message with users public address 
+
 If userdoes not exist, Connect to Skycoin-CLI, GenerateKeypair, then Save to SQL DB 
+
 
 ### /getaddress ###
 `getaddress := s.HasPrefix(Message, "/getaddress")//If Message starts with getaddress`  
