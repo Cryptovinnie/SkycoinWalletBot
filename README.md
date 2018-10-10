@@ -42,4 +42,25 @@ Type "help" for help.`
 ## Creating a Postgres database ##
 The first thing we need to do is connect to Postgres with our postgres role. To do this we want to type the following into our terminal.
 
-psql -U postgres
+`psql -U postgres`
+
+Creating Database 
+We will create the DB which will include all fields that are needed. fields will be 
+
+`| telegram_username | public_wallet | public_key | private_key |`
+
+`CREATE DATABASE skycoinbalancesDB;`
+
+Next we want to connect to our database. We do that by typing the following.
+
+`\c skycoinbalancesDB`
+
+`CREATE TABLE users (
+  id SERIAL,
+  telegram_username STRING PRIMARY KEY,
+  public_wallet TEXT,
+  public_key TEXT,
+  private_key TEXT
+);`
+
+
