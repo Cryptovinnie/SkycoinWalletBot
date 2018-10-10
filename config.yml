@@ -1,0 +1,9 @@
+database:
+  connectionUri: "database connection uri"
+
+server:
+  port: 8080
+
+telegram: 
+  apikey: "123456:abcdef"
+
