@@ -11,6 +11,12 @@ Check balances
 Send to Multiple address
 etc
 
+## Install and Build ## 
+```
+mkdir -p $GOPATH/src/github.com/Cryptovinnie
+cd $GOPATH/src/github.com/Cryptovinnie
+git clone https://github.com/BigOokie/SkycoinWalletBot.git
+```
 
 ## Install PostGreSQL ##
 
