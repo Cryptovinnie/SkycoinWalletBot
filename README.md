@@ -105,31 +105,41 @@ If you would like to see the data you just inserted into your table, as well as 
  Message := update.Message.Text //Message received by bot
  p("Message from telegram: ", Message) //Print message received
 ```
-`Wallet := s.HasPrefix(Message, "/wallet:") //If Message starts with wallet:`
+`Wallet := s.HasPrefix(Message, "/wallet:") //If Message starts with wallet:`  
+
 If message to bot contains "/wallet:"  
+
 Get Telegram username and unique chatID!!! 
+
 Split String after Semi-colon (:)  
+
 Connect to Skycoin-CLI and get wallet balance. return this in a message via TelegramBot. 
 
-`createaddress := s.HasPrefix(Message, "/createaddress") //If Message starts with createaddress`
+`createaddress := s.HasPrefix(Message, "/createaddress") //If Message starts with createaddress`  
+
 If message to bot contains "/createaddress"
 Get Telegram username and unique chatID!!!
 Search SQL Database to see if Username already exists. 
 If Username is in DB send back message with users public address 
 If userdoes not exist, Connect to Skycoin-CLI, GenerateKeypair, then Save to SQL DB 
 
-`getaddress := s.HasPrefix(Message, "/getaddress")//If Message starts with getaddress`
+`getaddress := s.HasPrefix(Message, "/getaddress")//If Message starts with getaddress`  
+
 If message to bot contains "/getaddress"
 Do same as createaddress. 
 
-`sendsky := s.HasPrefix(Message, "/sendsky")//If Message starts with sendsky`
-If message to bot contains "/sendsky"
-Get Telegram username and unique chatID!!!
+`sendsky := s.HasPrefix(Message, "/sendsky")//If Message starts with sendsky`  
+
+If message to bot contains "/sendsky"  
+Get Telegram username and unique chatID!!!  
 Message in format "/sendsky 100 @Username"  
+
 Check SQL Database for Telegram username.  
-Connect to Skycoin-CLI and check spendable balance, Save this as a variable. 
-Split String up get @Username address and int amount eg `100`, Check this address in SQL database for wallet address, If no address exists do `/createaddress`
-Once @Username exists in SQL Database, Send int amount to @Username Public address
+Connect to Skycoin-CLI and check spendable balance, Save this as a variable.  
+Split String up get @Username address and int amount eg `100`, Check this address in SQL database for wallet address, If no address exists do `/createaddress` 
+
+
+Once @Username exists in SQL Database, Send int amount to @Username Public address  
 Then send confirmation to Telegram user who initiated transaction + if chatID exists in SQL Database send Verification message. 
 
 
