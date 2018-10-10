@@ -20,7 +20,7 @@ Exit out of the PostgreSQL prompt by typing:
 
 `$ \q`
 
-Enabling Postgres command line tools
+# Enabling Postgres command line tools #
 If you are using the default terminal, you are going to want to modify the file at ~/.bash_profile. If you are using something like Oh My Zsh you are going to want to modify the file ~/.zshrc.
 
 To edit this file you likely need to open it via the terminal, so open your terminal and type `nano ~/.bash_profile` 
