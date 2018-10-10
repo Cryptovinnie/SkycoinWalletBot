@@ -164,7 +164,8 @@ Get Telegram username and unique chatID!!!
 Message in format "/sendsky 100 @V1nnie"  
 
 Check SQL Database for sender Telegram username. -@Synth
-`
+
+```
 id | telegram_username | public_wallet | public_key |    private_key   
 ----+-------------------+---------------+------------+----------------  
   1 |    @Synth   ✅    | pubwallet123  |  pubkey123 |    privkey123  
