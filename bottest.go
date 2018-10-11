@@ -2,7 +2,7 @@ package main
 
 import s "strings"
 import (
-  	//"database/sql"
+  	"database/sql"
    	"fmt"
    	"log"
    	"gopkg.in/telegram-bot-api.v4"
@@ -12,6 +12,13 @@ import (
 )
 var p = fmt.Println
 
+const (
+  host     = "localhost"
+  port     = 5432
+  user     = "postgres"
+  password = "masterpassword"
+  dbname   = "skycoinbalancesDB"
+)
 
 func main() {
 	//get telegrambotapikey from config file. 
@@ -31,25 +38,6 @@ func main() {
 	
 	log.Printf("TelegramAPI is %s", telegramapikeys)
 	
-	//Database settings 
-	log.Printf("host is %s", configuration.SqlDatabase.Host)
-	log.Printf("port is %d", configuration.SqlDatabase.Port)
-	log.Printf("user is %s", configuration.SqlDatabase.User)
-	log.Printf("password is %s", configuration.SqlDatabase.Password)
-	log.Printf("dbname is %s", configuration.SqlDatabase.Dbname)
-	
-	
-	var host     = configuration.SqlDatabase.Host
-	var port     = configuration.SqlDatabase.Port
-	var user     = configuration.SqlDatabase.User
-	var password = configuration.SqlDatabase.Password
-	var dbname   = configuration.SqlDatabase.Dbname
-	
-	p("host is ", host)
-	p("port is ", port)
-	p("user is ", user)
-	p("password is ", password)
-	p("dbname is ", dbname)
 	
         //Telegram messenger
         bot, err := tgbotapi.NewBotAPI(telegramapikeys)
@@ -77,9 +65,9 @@ func main() {
                 //Message := "wallet:1234567890" //testing string
 
               Wallet := s.HasPrefix(Message, "/wallet:") //If Message starts with wallet
-             //createaddress := s.HasPrefix(Message, "/createaddress") //If Message starts with createaddress
-             // getaddress := s.HasPrefix(Message, "/getaddress")//If Message starts with createaddress
-             // sendsky := s.HasPrefix(Message, "/sendsky")//If Message starts with createaddress
+              createaddress := s.HasPrefix(Message, "/createaddress") //If Message starts with createaddress
+              getaddress := s.HasPrefix(Message, "/getaddress")//If Message starts with createaddress
+              sendsky := s.HasPrefix(Message, "/sendsky")//If Message starts with createaddress
 
 
 		switch Wallet {
@@ -105,6 +93,71 @@ func main() {
 
 			default: // If none of the above options do this.
 				p("Message Switch not worked: ", s.HasPrefix(Message, "wallet"))
+			}
+
+			switch createaddress {
+			case true: //If message starts with createaddress:
+							p("createaddress Switch worked: ", s.HasPrefix(Message, "createaddress"))
+							UserName := update.Message.From.UserName
+							 p("Username is ", UserName)
+
+									//Check database for userid existing.
+									psqlInfo := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
+									host, port, user, password, dbname)
+									
+									db, err := sql.Open("postgres", psqlInfo)
+										if err != nil { 
+											panic(err) 
+										}
+									defer db.Close()
+
+								sqlStatement := `SELECT id, public_wallet FROM users WHERE telegram_username=$1;`
+								var public_wallet string
+								var telegram_username string
+
+								row := db.QueryRow(sqlStatement, UserName)
+								switch err := row.Scan(&telegram_username, &public_wallet); err {
+
+								case sql.ErrNoRows:
+								fmt.Println("No rows were returned!") //User was not found in DB so create address
+
+								// Run address creation script here
+								//Connect to Skycoin-CLI and run address_gen2.go
+								//Save output to SQL database.
+								AddrCreated := "abcdefghijklmno11p"// testing AddrCreated
+																	
+								//sqlinfo bellow
+								psqlInfo := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
+								db, err := sql.Open("postgres", psqlInfo)
+								if err != nil {
+								panic(err)
+								}
+								defer db.Close()
+
+
+								// Save created wallet to SQL DB
+								sqlStatement := `
+								INSERT INTO users (telegram_username, public_wallet, public_key, private_key)
+								VALUES ($1, $2, $3, $4)
+								RETURNING id`
+										id := 0
+										err = db.QueryRow(sqlStatement, UserName, AddrCreated, "Publickey1111", "Privatekey11111").Scan(&id)
+										if err != nil {
+										panic(err)
+										}
+										fmt.Println("New record ID is:", id)
+								//End of SQL info. Still in For Updates loop under wallet: switch.
+								//send message back
+									msg := tgbotapi.NewMessage(update.Message.Chat.ID, AddrCreated)
+									bot.Send(msg)
+
+								}
+								//Address alread created and exists.
+								msg := tgbotapi.NewMessage(update.Message.Chat.ID, public_wallet)
+								bot.Send(msg)
+						default:
+						p("createaddress Switch not worked: ", s.HasPrefix(Message, "createaddress"))
+								}
+
 		}
-	}
 }
