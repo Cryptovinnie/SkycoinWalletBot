@@ -25,7 +25,11 @@ func main() {
 	log.Printf("database uri is %s", configuration.Database.ConnectionUri)
 	log.Printf("port for this application is %d", configuration.Server.Port)
 	log.Printf("TelegramAPI is %s", configuration.Telegram.Apikey)
-
+	log.Printf("SQL1 host is %s", configuration.Sqldatabase.Host)
+	log.Printf("SQL2 port is %d", configuration.Sqldatabase.Port)
+	log.Printf("SQL3 user is %s", configuration.Sqldatabase.User)
+	log.Printf("SQL4 password is %s", configuration.Sqldatabase.Password)
+	log.Printf("SQL5 dbname is %s", configuration.Sqldatabase.Dbname)
 
 
 }
