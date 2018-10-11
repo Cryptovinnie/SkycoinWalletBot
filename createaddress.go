@@ -12,17 +12,12 @@ import (
 
 	_ "github.com/lib/pq"
 	"gopkg.in/telegram-bot-api.v4"
+	viper "github.com/spf13/viper"
+	"gopkg.in/telegram-bot-api.v4"
+	"github.com/Cryptovinnie/SkycoinWalletBot/config"
 )
 
 var p = fmt.Println
-
-const (
-		host     = "localhost"
-		port     = 5432
-		user     = "postgres"
-		password = "masterpassword"
-		dbname   = "skycoinbalancesdb"
-)
 
 func input(x string) string {
 	gopath := os.Getenv("GOPATH")
@@ -44,13 +39,14 @@ func input(x string) string {
 }
 
 func connectDB() string {
-	const (
-		host     = "localhost"
-		port     = 5432
-		user     = "postgres"
-		password = "masterpassword"
-		dbname   = "skycoinbalancesdb"
-	)
+
+	var telegramapikeys = configuration.Telegram.Apikey
+	var host =  configuration.SqlDatabase.Host
+	var port = configuration.SqlDatabase.Port
+	var user = configuration.SqlDatabase.User
+	var password = configuration.SqlDatabase.Password
+	var dbname = configuration.SqlDatabase.Dbname
+
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
 		"password=%s dbname=%s sslmode=disable",
 		host, port, user, password, dbname)
@@ -151,7 +147,7 @@ func telegram() {
 				VALUES ($1, $2, $3, $4, $5)
 				RETURNING id`
 				id := 0
-				err = db.QueryRow(sqlStatement, chatid, UserName, AddrCreated, AddrCreated, AddrCreated).Scan(&id)
+				err = db.QueryRow(sqlStatement, chatid, UserName, AddrCreated, "Publickey12213", "Privatekey12123").Scan(&id)
 				if err != nil {
 					panic(err)
 				}
