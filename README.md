@@ -98,8 +98,12 @@ You should see the output `INSERT 0 1` after inserting this row.
 
 If you would like to see the data you just inserted into your table, as well as the auto-incrementing id, you can do so by running the following SQL.  
 
-```SELECT * FROM users;
+```
+SELECT * FROM users;
+```
 
+
+```
  id | telegram_username | public_wallet | public_key |    private_key   
 ----+-------------------+---------------+------------+----------------  
   1 |    @testing       | pubwallet123  |  pubkey123 |    privkey123  
