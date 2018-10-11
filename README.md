@@ -1,6 +1,6 @@
 # Skycoin Wallet Bot
 
-The idea is to create and inline telegram bot that can be used within telegram group conversations, with hooks into telegram cli to send tips to other users by simply typing `/sendsky 100 @V1nnie` initially this bot will be limited to small tips 0.1SKY or 1000 drops. 
+The idea is to create and inline telegram bot that can be used within telegram group conversations, with hooks into telegram cli to send tips to other users by simply typing `/sendsky 100 @Vinn1e` initially this bot will be limited to small tips 0.1SKY or 1000 drops. 
 
 At the begining this will be similar to how a centralized wallet works without needing users to enter private keys, but will progress to being controlled entirely by end users. 
 
@@ -173,7 +173,7 @@ Do same as createaddress.
 `sendsky := s.HasPrefix(Message, "/sendsky")//If Message starts with sendsky`  
 
 If message to bot contains "/sendsky"  
-eg `/sendsky 100 @V1nnie` message sent from @Synth
+eg `/sendsky 100 @Vinn1e` message sent from @Synth
 
 Get Telegram username and unique chatID!!!  
 
@@ -182,7 +182,7 @@ Get Telegram username and unique chatID!!!
 - chatId = 1111111
 ```
 
-Message in format "/sendsky 100 @V1nnie"  
+Message in format "/sendsky 100 @Vinn1e"  
 
 Check SQL Database for sender Telegram username. -@Synth
 
@@ -190,7 +190,7 @@ Check SQL Database for sender Telegram username. -@Synth
 id | telegram_username | public_wallet | public_key |    private_key   
 ----+------------------+---------------+------------+----------------  
   1 |    @Synth   ✅   | pubwallet123  | pubkey123 |    privkey123  
-  2 |    @V1nnie   ❗❗  | V1nnieaddress |  V1nniepub |    V1nniepriv
+  2 |    @Vinn1e   ❗❗  | Vinn1eaddress |  Vinn1epub |    Vinn1epriv
  ```  
  
 Connect to Skycoin-CLI and check spendable balance, Save this as a variable.
@@ -198,14 +198,14 @@ Connect to Skycoin-CLI and check spendable balance, Save this as a variable.
 var address = pubwallet123
 var SPENDABLE = 1000
 
-Split String up get @Username address and int amount eg `100`, -@V1nnie❗
+Split String up get @Username address and int amount eg `100`, -@Vinn1e❗
 Check this address in SQL database for wallet address, If no address exists do `/createaddress` 
 
 
 Once @Username exists in SQL Database, Send int amount to @Username Public address  
-`100 SKY from @synth (pubwallet123) to @V1nnie (V1nnieaddress)`
+`100 SKY from @synth (pubwallet123) to @Vinn1e (Vinn1eaddress)`
 
-Connect to Skycoin-CLI "sendto" (entercli command arg here) send from address @synth (publickey123) to @V1nnie
+Connect to Skycoin-CLI "sendto" (entercli command arg here) send from address @synth (publickey123) to @Vinn1e
 
 Then send confirmation to Telegram user who initiated transaction + if chatID exists in SQL Database send Verification message. 
 
