@@ -45,6 +45,11 @@ func main() {
 	var password = configuration.SqlDatabase.Password
 	var dbname   = configuration.SqlDatabase.Dbname
 	
+	p("host is ", host)
+	p("port is ", port)
+	p("user is ", user)
+	p("password is ", password)
+	p("dbname is ", dbname)
 	
         //Telegram messenger
         bot, err := tgbotapi.NewBotAPI(telegramapikeys)
@@ -72,9 +77,9 @@ func main() {
                 //Message := "wallet:1234567890" //testing string
 
               Wallet := s.HasPrefix(Message, "/wallet:") //If Message starts with wallet
-              createaddress := s.HasPrefix(Message, "/createaddress") //If Message starts with createaddress
-              getaddress := s.HasPrefix(Message, "/getaddress")//If Message starts with createaddress
-              sendsky := s.HasPrefix(Message, "/sendsky")//If Message starts with createaddress
+             //createaddress := s.HasPrefix(Message, "/createaddress") //If Message starts with createaddress
+             // getaddress := s.HasPrefix(Message, "/getaddress")//If Message starts with createaddress
+             // sendsky := s.HasPrefix(Message, "/sendsky")//If Message starts with createaddress
 
 
 		switch Wallet {
