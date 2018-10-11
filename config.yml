@@ -7,3 +7,9 @@ server:
 telegram: 
   apikey: "123456:abcdef"
 
+sqldatabase:
+  host: "localhost"
+  port: 5432
+  user: "postgres"
+  password: "masterpassword"
+  dbname: "skycoinbalancesDB"
