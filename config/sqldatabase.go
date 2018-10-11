@@ -1,10 +1,10 @@
 package config
 
 type SqlDatabaseConfiguration struct {
-	host string
-  port int
-  user string
-  password string
-  dbname string
+  Host string
+  Port int
+  User string
+  Password string
+  Dbname string
 
 }
