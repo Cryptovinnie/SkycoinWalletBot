@@ -22,14 +22,17 @@ func main() {
 
 
 
-	log.Printf("database uri is %s", configuration.Database.ConnectionUri)
-	log.Printf("port for this application is %d", configuration.Server.Port)
+	//log.Printf("database uri is %s", configuration.Database.ConnectionUri)
+	//log.Printf("port for this application is %d", configuration.Server.Port)
+	
 	log.Printf("TelegramAPI is %s", configuration.Telegram.Apikey)
-	log.Printf("SQL1 host is %s", configuration.SqlDatabase.Host)
-	log.Printf("SQL2 port is %d", configuration.SqlDatabase.Port)
-	log.Printf("SQL3 user is %s", configuration.SqlDatabase.User)
-	log.Printf("SQL4 password is %s", configuration.SqlDatabase.Password)
-	log.Printf("SQL5 dbname is %s", configuration.SqlDatabase.Dbname)
+	
+	//Database settings 
+	log.Printf("host is %s", configuration.SqlDatabase.Host)
+	log.Printf("port is %d", configuration.SqlDatabase.Port)
+	log.Printf("user is %s", configuration.SqlDatabase.User)
+	log.Printf("password is %s", configuration.SqlDatabase.Password)
+	log.Printf("dbname is %s", configuration.SqlDatabase.Dbname)
 
 
 }
