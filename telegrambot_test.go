@@ -7,6 +7,8 @@ import (
    	"log"
    	"gopkg.in/telegram-bot-api.v4"
       _ "github.com/lib/pq"
+	viper "github.com/spf13/viper"
+	"github.com/Cryptovinnie/SkycoinWalletBot/config"
 )
 var p = fmt.Println
 
@@ -19,12 +21,29 @@ const (
 )
 
 func main() {
+	//get telegrambotapikey from config file. 
+	viper.SetConfigName("config")
+	viper.AddConfigPath(".")
+	var configuration config.Configuration
+	
+	if err := viper.ReadInConfig(); err != nil {
+		log.Fatalf("Error reading config file, %s", err)
+	}
+	err := viper.Unmarshal(&configuration)
+	if err != nil {
+		log.Fatalf("unable to decode into struct, %v", err)
+	}
+var telegramapikeys = configuration.Telegram.Apikey
+	
+	log.Printf("TelegramAPI is %s", telegramapikeys)
+	
+	
         //Telegram messenger
-        bot, err := tgbotapi.NewBotAPI("TELEGRAMBOTAPIKEYS")
+        bot, err := tgbotapi.NewBotAPI("telegramapikeys")
         if err != nil {
                 log.Panic(err)
         }
- bot.Debug = true
+ 	bot.Debug = true
 
         log.Printf("Authorized on account %s", bot.Self.UserName)
 
