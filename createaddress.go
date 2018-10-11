@@ -151,7 +151,7 @@ func telegram() {
 				VALUES ($1, $2, $3, $4, $5)
 				RETURNING id`
 				id := 0
-				err = db.QueryRow(sqlStatement, chatid, UserName, AddrCreated, "Publickey12213", "Privatekey12123").Scan(&id)
+				err = db.QueryRow(sqlStatement, chatid, UserName, AddrCreated, AddrCreated, AddrCreated).Scan(&id)
 				if err != nil {
 					panic(err)
 				}
