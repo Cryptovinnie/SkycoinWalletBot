@@ -21,7 +21,7 @@ const (
 		port     = 5432
 		user     = "postgres"
 		password = "masterpassword"
-		dbname   = "skycoinbotdatabase"
+		dbname   = "skycoinbalancesdb"
 )
 
 func input(x string) string {
@@ -49,7 +49,7 @@ func connectDB() string {
 		port     = 5432
 		user     = "postgres"
 		password = "masterpassword"
-		dbname   = "skycoinbotdatabase"
+		dbname   = "skycoinbalancesdb"
 	)
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
 		"password=%s dbname=%s sslmode=disable",
@@ -147,9 +147,9 @@ func telegram() {
 				AddrCreated := Input                  //Save created Address to AddrCreated
 				//Then Save created wallet to SQL DB
 				sqlStatement := `
-										INSERT INTO users (chatid, telegram_username, public_wallet, public_address, private_key)
-										VALUES ($1, $2, $3, $4, $5)
-										RETURNING id`
+				INSERT INTO users (chatid, telegram_username, public_wallet, public_key, private_key)
+				VALUES ($1, $2, $3, $4, $5)
+				RETURNING id`
 				id := 0
 				err = db.QueryRow(sqlStatement, chatid, UserName, AddrCreated, "Publickey12213", "Privatekey12123").Scan(&id)
 				if err != nil {
