@@ -10,8 +10,7 @@ import (
 	"os/exec"
 	s "strings"
 
-	_ "github.com/lib/pq"
-	"gopkg.in/telegram-bot-api.v4"
+	_ "github.com/lib/pq"	
 	viper "github.com/spf13/viper"
 	"gopkg.in/telegram-bot-api.v4"
 	"github.com/Cryptovinnie/SkycoinWalletBot/config"
@@ -39,8 +38,19 @@ func input(x string) string {
 }
 
 func connectDB() string {
+	//get telegrambotapikey from config file. 
+	viper.SetConfigName("config")
+	viper.AddConfigPath(".")
+	var configuration config.Configuration
+	
+	if err := viper.ReadInConfig(); err != nil {
+		log.Fatalf("Error reading config file, %s", err)
+	}
+	err := viper.Unmarshal(&configuration)
+	if err != nil {
+		log.Fatalf("unable to decode into struct, %v", err)
+	}
 
-	var telegramapikeys = configuration.Telegram.Apikey
 	var host =  configuration.SqlDatabase.Host
 	var port = configuration.SqlDatabase.Port
 	var user = configuration.SqlDatabase.User
@@ -69,7 +79,29 @@ func connectDB() string {
 
 func telegram() {
 
-	bot, err := tgbotapi.NewBotAPI("APIKEYS")
+	//get telegrambotapikey from config file. 
+	viper.SetConfigName("config")
+	viper.AddConfigPath(".")
+	var configuration config.Configuration
+	
+	if err := viper.ReadInConfig(); err != nil {
+		log.Fatalf("Error reading config file, %s", err)
+	}
+	err := viper.Unmarshal(&configuration)
+	if err != nil {
+		log.Fatalf("unable to decode into struct, %v", err)
+	}
+
+	var telegramapikeys = configuration.Telegram.Apikey
+	var host =  configuration.SqlDatabase.Host
+	var port = configuration.SqlDatabase.Port
+	var user = configuration.SqlDatabase.User
+	var password = configuration.SqlDatabase.Password
+	var dbname = configuration.SqlDatabase.Dbname
+
+	//End of config data files. 
+	
+	bot, err := tgbotapi.NewBotAPI(telegramapikeys)
 	if err != nil {
 		log.Panic(err)
 	}
