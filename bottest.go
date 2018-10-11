@@ -12,14 +12,6 @@ import (
 )
 var p = fmt.Println
 
-const (
-  host     = "localhost"
-  port     = 5432
-  user     = "postgres"
-  password = "masterpassword"
-  dbname   = "skycoinbalancesDB"
-)
-
 func main() {
 	//get telegrambotapikey from config file. 
 	viper.SetConfigName("config")
@@ -35,6 +27,11 @@ func main() {
 	}
 
 	var telegramapikeys = configuration.Telegram.Apikey
+	var host =  configuration.SqlDatabase.Host
+	var port = configuration.SqlDatabase.Port
+	var user = configuration.SqlDatabase.User
+	var password = configuration.SqlDatabase.Password
+	var dbname = configuration.SqlDatabase.Dbname
 	
 	log.Printf("TelegramAPI is %s", telegramapikeys)
 	
@@ -66,8 +63,8 @@ func main() {
 
               Wallet := s.HasPrefix(Message, "/wallet:") //If Message starts with wallet
               createaddress := s.HasPrefix(Message, "/createaddress") //If Message starts with createaddress
-              getaddress := s.HasPrefix(Message, "/getaddress")//If Message starts with createaddress
-              sendsky := s.HasPrefix(Message, "/sendsky")//If Message starts with createaddress
+            //  getaddress := s.HasPrefix(Message, "/getaddress")//If Message starts with createaddress
+            //  sendsky := s.HasPrefix(Message, "/sendsky")//If Message starts with createaddress
 
 
 		switch Wallet {
