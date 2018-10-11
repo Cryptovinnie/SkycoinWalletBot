@@ -12,13 +12,6 @@ import (
 )
 var p = fmt.Println
 
-const (
-  host     = "localhost"
-  port     = 5432
-  user     = "postgres"
-  password = "masterpassword"
-  dbname   = "skycoinbalancesDB"
-)
 
 func main() {
 	//get telegrambotapikey from config file. 
@@ -38,6 +31,20 @@ func main() {
 	
 	log.Printf("TelegramAPI is %s", telegramapikeys)
 	
+	//Database settings 
+	log.Printf("host is %s", configuration.SqlDatabase.Host)
+	log.Printf("port is %d", configuration.SqlDatabase.Port)
+	log.Printf("user is %s", configuration.SqlDatabase.User)
+	log.Printf("password is %s", configuration.SqlDatabase.Password)
+	log.Printf("dbname is %s", configuration.SqlDatabase.Dbname)
+	
+	const (
+	host     = configuration.SqlDatabase.Host
+	port     = configuration.SqlDatabase.Port
+	user     = configuration.SqlDatabase.User
+	password = configuration.SqlDatabase.Password
+	dbname   = configuration.SqlDatabase.Dbname
+	)
 	
         //Telegram messenger
         bot, err := tgbotapi.NewBotAPI(telegramapikeys)
