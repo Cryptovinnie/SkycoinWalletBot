@@ -80,6 +80,7 @@ Next we want to connect to our database. We do that by typing the following.
 ```
 CREATE TABLE users (
   id SERIAL,
+  chatid INTEGER,  
   telegram_username TEXT UNIQUE NOT NULL,
   public_wallet TEXT UNIQUE NOT NULL,
   public_key TEXT UNIQUE NOT NULL,
@@ -90,8 +91,8 @@ CREATE TABLE users (
 Next enter a test entry into DB 
 ```
 psql -U postgres -d skycoinbalancesDB
-INSERT INTO users (id, telegram_username, public_wallet, public_key, private_key)  
-VALUES (0, '@testing', 'pubwallet123', 'pubkey123', 'privkey123');
+INSERT INTO users (id, chatid, telegram_username, public_wallet, public_key, private_key)  
+VALUES (0, 666666, '@testing', 'pubwallet123', 'pubkey123', 'privkey123');
 ```  
 
 You should see the output `INSERT 0 1` after inserting this row.
@@ -104,9 +105,9 @@ SELECT * FROM users;
 
 
 ```
- id | telegram_username | public_wallet | public_key |    private_key   
-----+-------------------+---------------+------------+----------------  
-  1 |    @testing       | pubwallet123  |  pubkey123 |    privkey123  
+ id | chatid | telegram_username | public_wallet | public_key |    private_key   
+----+--------+-------------------+---------------+------------+----------------  
+  1 | 666666 |     @testing      | pubwallet123  |  pubkey123 |    privkey123  
   
  ```  
  
@@ -191,10 +192,10 @@ Message in format "/sendsky 100 @Vinn1e"
 Check SQL Database for sender Telegram username. -@Synth
 
 ```
-id | telegram_username | public_wallet | public_key |    private_key   
-----+------------------+---------------+------------+----------------  
-  1 |    @Synth   ✅   | pubwallet123  | pubkey123 |    privkey123  
-  2 |    @Vinn1e   ❗❗  | Vinn1eaddress |  Vinn1epub |    Vinn1epriv
+id  |  chatid  | telegram_username | public_wallet | public_key |    private_key   
+----+----------+-------------------+---------------+------------+----------------  
+  1 |  123456  |    @Synth   ✅    | pubwallet123  | pubkey123 |    privkey123  
+  2 |  098765  |    @Vinn1e   ❗❗   | Vinn1eaddress |  Vinn1epub |    Vinn1epriv
  ```  
  
 Connect to Skycoin-CLI and check spendable balance, Save this as a variable.
