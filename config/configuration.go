@@ -5,4 +5,5 @@ import ()
 type Configuration struct {
 	Server ServerConfiguration
 	Database DatabaseConfiguration
+	Telegram TelegramConfiguration 
 }
