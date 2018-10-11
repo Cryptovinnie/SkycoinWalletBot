@@ -17,7 +17,7 @@ import (
 var p = fmt.Println
 
 const (
-	host     = "localhost"
+		host     = "localhost"
 		port     = 5432
 		user     = "postgres"
 		password = "masterpassword"
@@ -25,7 +25,8 @@ const (
 )
 
 func input(x string) string {
-	path := "/home/username/go/bin/skycoin-cli"
+	gopath := os.Getenv("GOPATH")
+	path := gopath + "/bin/skycoin-cli"
 	input := x //enter argument here to run
 	cmd := exec.Command(path, input)
 
