@@ -25,7 +25,7 @@ const (
 )
 
 func input(x string) string {
-	path := "/home/josh/go/bin/skycoin-cli"
+	path := "/home/username/go/bin/skycoin-cli"
 	input := x //enter argument here to run
 	cmd := exec.Command(path, input)
 
