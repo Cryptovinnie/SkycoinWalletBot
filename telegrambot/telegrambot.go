@@ -18,8 +18,7 @@ type Bot struct {
 	commandHandlers        map[string]CommandHandler
 	adminCommandHandlers   map[string]CommandHandler
 	privateMessageHandlers []MessageHandler
-	groupMessageHandlers   []MessageHandler
-	gaclient               *ga.Client
+	groupMessageHandlers   []MessageHandler	
 }
 
 // BotContext provides context for Bot Messages
