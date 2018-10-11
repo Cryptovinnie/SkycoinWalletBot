@@ -2,7 +2,7 @@ package main
 
 import s "strings"
 import (
-  	"database/sql"
+  	//"database/sql"
    	"fmt"
    	"log"
    	"gopkg.in/telegram-bot-api.v4"
@@ -38,13 +38,13 @@ func main() {
 	log.Printf("password is %s", configuration.SqlDatabase.Password)
 	log.Printf("dbname is %s", configuration.SqlDatabase.Dbname)
 	
-	const (
-	host     = configuration.SqlDatabase.Host
-	port     = configuration.SqlDatabase.Port
-	user     = configuration.SqlDatabase.User
-	password = configuration.SqlDatabase.Password
-	dbname   = configuration.SqlDatabase.Dbname
-	)
+	
+	var host     = configuration.SqlDatabase.Host
+	var port     = configuration.SqlDatabase.Port
+	var user     = configuration.SqlDatabase.User
+	var password = configuration.SqlDatabase.Password
+	var dbname   = configuration.SqlDatabase.Dbname
+	
 	
         //Telegram messenger
         bot, err := tgbotapi.NewBotAPI(telegramapikeys)
