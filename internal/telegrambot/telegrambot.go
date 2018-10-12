@@ -10,9 +10,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/BigOokie/skywire-wing-commander/internal/skymgrmon"
-	"github.com/BigOokie/skywire-wing-commander/internal/wcconfig"
-	"github.com/BigOokie/skywire-wing-commander/internal/wcconst"
+	"github.com/BigOokie/SkycoinWalletBot/internal/skymgrmon"
+	"github.com/BigOokie/SkycoinWalletBot/internal/wcconfig"
+	"github.com/BigOokie/SkycoinWalletBot/internal/wcconst"
 	"github.com/cloudfoundry/jibber_jabber"
 	"github.com/jpillora/go-ogle-analytics"
 	log "github.com/sirupsen/logrus"

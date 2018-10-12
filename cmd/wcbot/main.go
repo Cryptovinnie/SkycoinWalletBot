@@ -10,9 +10,9 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/BigOokie/skywire-wing-commander/internal/telegrambot"
-	"github.com/BigOokie/skywire-wing-commander/internal/utils"
-	"github.com/BigOokie/skywire-wing-commander/internal/wcconst"
+	"github.com/BigOokie/SkycoinWalletBot/internal/telegrambot"
+	"github.com/BigOokie/SkycoinWalletBot/internal/utils"
+	"github.com/BigOokie/SkycoinWalletBot/internal/wcconst"
 	log "github.com/sirupsen/logrus"
 )
 

@@ -11,9 +11,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/BigOokie/skywire-wing-commander/internal/utils"
-	"github.com/BigOokie/skywire-wing-commander/internal/wcconfig"
-	"github.com/BigOokie/skywire-wing-commander/internal/wcconst"
+	"github.com/BigOokie/SkycoinWalletBot/internal/utils"
+	"github.com/BigOokie/SkycoinWalletBot/internal/wcconfig"
+	"github.com/BigOokie/SkycoinWalletBot/internal/wcconst"
 	log "github.com/sirupsen/logrus"
 )
 

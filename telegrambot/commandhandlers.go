@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/BigOokie/skywire-wing-commander/internal/utils"
-	"github.com/BigOokie/skywire-wing-commander/internal/wcconst"
+	"github.com/BigOokie/SkycoinWalletBot/internal/utils"
+	"github.com/BigOokie/SkycoinWalletBot/internal/wcconst"
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/telegram-bot-api.v4"
 )
@@ -193,7 +193,7 @@ func (bot *Bot) handleCommandCheckUpdate(ctx *BotContext, command, args string) 
 		return err
 	}
 
-	updateAvailable, updateMsg := utils.UpdateAvailable("BigOokie", "skywire-wing-commander", wcconst.BotVersion)
+	updateAvailable, updateMsg := utils.UpdateAvailable("BigOokie", "SkycoinWalletBot", wcconst.BotVersion)
 	if updateAvailable {
 		bot.SendGAEvent("BotCommand", command+"-updateavailable", "Handle"+command)
 		err = bot.Send(ctx, getSendModeforContext(ctx), "markdown", fmt.Sprintf("*Update available:* %s", updateMsg))
@@ -272,7 +272,7 @@ func (bot *Bot) handleCommandDoUpdate(ctx *BotContext, command, args string) err
 		return err
 	}
 
-	updateAvailable, updateMsg := utils.UpdateAvailable("BigOokie", "skywire-wing-commander", wcconst.BotVersion)
+	updateAvailable, updateMsg := utils.UpdateAvailable("BigOokie", "SkycoinWalletBot", wcconst.BotVersion)
 	if !updateAvailable {
 		return bot.Send(ctx, getSendModeforContext(ctx), "markdown", fmt.Sprintf("*Already up to date:* %s", updateMsg))
 	}

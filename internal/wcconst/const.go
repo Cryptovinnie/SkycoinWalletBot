@@ -20,7 +20,7 @@ const (
 		"Exiting\n"
 
 	// ScriptPath defines the path to the Scripts folder
-	ScriptPath = "/src/github.com/BigOokie/skywire-wing-commander/scripts/"
+	ScriptPath = "/src/github.com/BigOokie/SkycoinWalletBot/scripts/"
 
 	MsgCmdLineHelp = "Wing Commander Help\n" +
 		"Command line flags:\n" +
@@ -55,10 +55,10 @@ const (
 		"A Telegram bot written in *Go* designed to help the *Skyfleet* community monitor and manage their *Skyminers*.\n" +
 		"\n" +
 		"*Created by:* @BigOokie *2018*\n" +
-		"*GitHub:* https://github.com/BigOokie/skywire-wing-commander\n" +
+		"*GitHub:* https://github.com/BigOokie/SkycoinWalletBot\n" +
 		"*Twitter:* https://twitter.com/BigOokie\n" +
 		"\n" +
-		"Issues and feature requests must be logged via [GitHub](https://github.com/BigOokie/skywire-wing-commander/issues/new/choose)\n" +
+		"Issues and feature requests must be logged via [GitHub](https://github.com/BigOokie/SkycoinWalletBot/issues/new/choose)\n" +
 		"\n" +
 		"*Skycoin*: https://www.skycoin.net/\n" +
 		"\n" +

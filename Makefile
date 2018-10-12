@@ -29,7 +29,7 @@ lint: ## Run linters. Use make install-linters first.
 check: lint cover  ## Run coverage tests and linters
 
 cover: ## Runs tests on ./cmd/ with HTML code coverage
-	go test -race -cover -coverprofile=coverage.out -covermode=atomic -coverpkg=github.com/BigOokie/skywire-wing-commander/... ./...
+	go test -race -cover -coverprofile=coverage.out -covermode=atomic -coverpkg=github.com/BigOokie/SkycoinWalletBot/... ./...
 	go tool cover -html=coverage.out
 
 install-linters: ## Install linters
@@ -38,6 +38,6 @@ install-linters: ## Install linters
 	curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | bash -s -- -b $(GOPATH)/bin v1.10.2
 
 #format: ## Formats the code. Must have goimports installed (use make install-linters).
-#	goimports -w -local github.com/BigOokie/skywire-wing-commander ./cmd
-#	goimports -w -local github.com/BigOokie/skywire-wing-commander ./internal
+#	goimports -w -local github.com/BigOokie/SkycoinWalletBot ./cmd
+#	goimports -w -local github.com/BigOokie/SkycoinWalletBot ./internal
 
