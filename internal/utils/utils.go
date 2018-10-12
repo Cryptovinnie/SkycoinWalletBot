@@ -11,6 +11,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"runtime"
+	"log"
 
 	"github.com/Cryptovinnie/SkycoinWalletBot/internal/wcconst"
 	"github.com/marcsauter/single"
