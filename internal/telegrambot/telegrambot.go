@@ -10,7 +10,6 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/Cryptovinnie/SkycoinWalletBot/internal/skymgrmon"
 	"github.com/Cryptovinnie/SkycoinWalletBot/internal/wcconfig"
 	"github.com/Cryptovinnie/SkycoinWalletBot/internal/wcconst"
 	"github.com/cloudfoundry/jibber_jabber"

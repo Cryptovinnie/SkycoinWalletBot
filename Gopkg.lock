@@ -234,8 +234,7 @@
   input-imports = [
     "github.com/cloudfoundry/jibber_jabber",
     "github.com/go-test/deep",   
-    "github.com/marcsauter/single",
-    "",
+    "github.com/marcsauter/single",    
     "github.com/spf13/viper",
     "github.com/tcnksm/go-latest",
     "gopkg.in/telegram-bot-api.v4",
