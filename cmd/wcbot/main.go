@@ -13,7 +13,7 @@ import (
 	"github.com/Cryptovinnie/SkycoinWalletBot/internal/telegrambot"
 	"github.com/Cryptovinnie/SkycoinWalletBot/internal/utils"
 	"github.com/Cryptovinnie/SkycoinWalletBot/internal/wcconst"
-	log "github.com/sirupsen/logrus"
+	
 )
 
 var wc wcBotApp

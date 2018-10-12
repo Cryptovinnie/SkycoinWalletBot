@@ -14,7 +14,7 @@ import (
 	"github.com/Cryptovinnie/SkycoinWalletBot/internal/utils"
 	"github.com/Cryptovinnie/SkycoinWalletBot/internal/wcconfig"
 	"github.com/Cryptovinnie/SkycoinWalletBot/internal/wcconst"
-	log "github.com/sirupsen/logrus"
+	
 )
 
 type cmdlineFlags struct {

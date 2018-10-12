@@ -110,7 +110,7 @@
 
 [[projects]]
   digest = "1:d867dfa6751c8d7a435821ad3b736310c2ed68945d05b50fb9d23aee0540c8cc"
-  name = "github.com/sirupsen/logrus"
+  name = ""
   packages = ["."]
   pruneopts = "UT"
   revision = "3e01752db0189b9157070a0e1668a620f9a85da2"
@@ -244,7 +244,7 @@
     "github.com/go-test/deep",
     "github.com/jpillora/go-ogle-analytics",
     "github.com/marcsauter/single",
-    "github.com/sirupsen/logrus",
+    "",
     "github.com/spf13/viper",
     "github.com/tcnksm/go-latest",
     "gopkg.in/telegram-bot-api.v4",

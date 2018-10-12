@@ -14,8 +14,8 @@ import (
 	"github.com/Cryptovinnie/SkycoinWalletBot/internal/wcconfig"
 	"github.com/Cryptovinnie/SkycoinWalletBot/internal/wcconst"
 	"github.com/cloudfoundry/jibber_jabber"
-	"github.com/jpillora/go-ogle-analytics"
-	log "github.com/sirupsen/logrus"
+	
+	
 	"gopkg.in/telegram-bot-api.v4"
 )
 
