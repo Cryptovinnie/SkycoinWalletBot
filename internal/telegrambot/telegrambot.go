@@ -1,4 +1,4 @@
-// Copyright © 2018 BigOokie
+// Copyright © 2018 Cryptovinnie
 //
 // Use of this source code is governed by an MIT
 // license that can be found in the LICENSE file.
@@ -10,9 +10,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/BigOokie/SkycoinWalletBot/internal/skymgrmon"
-	"github.com/BigOokie/SkycoinWalletBot/internal/wcconfig"
-	"github.com/BigOokie/SkycoinWalletBot/internal/wcconst"
+	"github.com/Cryptovinnie/SkycoinWalletBot/internal/skymgrmon"
+	"github.com/Cryptovinnie/SkycoinWalletBot/internal/wcconfig"
+	"github.com/Cryptovinnie/SkycoinWalletBot/internal/wcconst"
 	"github.com/cloudfoundry/jibber_jabber"
 	"github.com/jpillora/go-ogle-analytics"
 	log "github.com/sirupsen/logrus"

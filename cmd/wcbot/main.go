@@ -1,4 +1,4 @@
-// Copyright © 2018 BigOokie
+// Copyright © 2018 Cryptovinnie
 //
 // Use of this source code is governed by an MIT
 // license that can be found in the LICENSE file.
@@ -10,9 +10,9 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/BigOokie/SkycoinWalletBot/internal/telegrambot"
-	"github.com/BigOokie/SkycoinWalletBot/internal/utils"
-	"github.com/BigOokie/SkycoinWalletBot/internal/wcconst"
+	"github.com/Cryptovinnie/SkycoinWalletBot/internal/telegrambot"
+	"github.com/Cryptovinnie/SkycoinWalletBot/internal/utils"
+	"github.com/Cryptovinnie/SkycoinWalletBot/internal/wcconst"
 	log "github.com/sirupsen/logrus"
 )
 

@@ -1,4 +1,4 @@
-// Copyright © 2018 BigOokie
+// Copyright © 2018 Cryptovinnie
 //
 // Use of this source code is governed by an MIT
 // license that can be found in the LICENSE file.
@@ -20,7 +20,7 @@ const (
 		"Exiting\n"
 
 	// ScriptPath defines the path to the Scripts folder
-	ScriptPath = "/src/github.com/BigOokie/SkycoinWalletBot/scripts/"
+	ScriptPath = "/src/github.com/Cryptovinnie/SkycoinWalletBot/scripts/"
 
 	MsgCmdLineHelp = "Wing Commander Help\n" +
 		"Command line flags:\n" +
@@ -54,11 +54,11 @@ const (
 	MsgAbout = "*Wing Commander (" + BotVersion + ")*\n" +
 		"A Telegram bot written in *Go* designed to help the *Skyfleet* community monitor and manage their *Skyminers*.\n" +
 		"\n" +
-		"*Created by:* @BigOokie *2018*\n" +
-		"*GitHub:* https://github.com/BigOokie/SkycoinWalletBot\n" +
-		"*Twitter:* https://twitter.com/BigOokie\n" +
+		"*Created by:* @Cryptovinnie *2018*\n" +
+		"*GitHub:* https://github.com/Cryptovinnie/SkycoinWalletBot\n" +
+		"*Twitter:* https://twitter.com/Cryptovinnie\n" +
 		"\n" +
-		"Issues and feature requests must be logged via [GitHub](https://github.com/BigOokie/SkycoinWalletBot/issues/new/choose)\n" +
+		"Issues and feature requests must be logged via [GitHub](https://github.com/Cryptovinnie/SkycoinWalletBot/issues/new/choose)\n" +
 		"\n" +
 		"*Skycoin*: https://www.skycoin.net/\n" +
 		"\n" +

@@ -1,4 +1,4 @@
-// Copyright © 2018 BigOokie
+// Copyright © 2018 Cryptovinnie
 //
 // Use of this source code is governed by an MIT
 // license that can be found in the LICENSE file.
@@ -11,8 +11,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/BigOokie/SkycoinWalletBot/internal/utils"
-	"github.com/BigOokie/SkycoinWalletBot/internal/wcconst"
+	"github.com/Cryptovinnie/SkycoinWalletBot/internal/utils"
+	"github.com/Cryptovinnie/SkycoinWalletBot/internal/wcconst"
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/telegram-bot-api.v4"
 )
@@ -198,7 +198,7 @@ func (bot *Bot) handleCommandCheckUpdate(ctx *BotContext, command, args string) 
 		return err
 	}
 
-	updateAvailable, updateMsg := utils.UpdateAvailable("BigOokie", "SkycoinWalletBot", wcconst.BotVersion)
+	updateAvailable, updateMsg := utils.UpdateAvailable("Cryptovinnie", "SkycoinWalletBot", wcconst.BotVersion)
 	if updateAvailable {
 		bot.SendGAEvent("BotCommand", command+"-updateavailable", "Handle"+command)
 		err = bot.Send(ctx, getSendModeforContext(ctx), "markdown", fmt.Sprintf("*Update available:* %s", updateMsg))
@@ -277,7 +277,7 @@ func (bot *Bot) handleCommandDoUpdate(ctx *BotContext, command, args string) err
 		return err
 	}
 
-	updateAvailable, updateMsg := utils.UpdateAvailable("BigOokie", "SkycoinWalletBot", wcconst.BotVersion)
+	updateAvailable, updateMsg := utils.UpdateAvailable("Cryptovinnie", "SkycoinWalletBot", wcconst.BotVersion)
 	if !updateAvailable {
 		return bot.Send(ctx, getSendModeforContext(ctx), "markdown", fmt.Sprintf("*Already up to date:* %s", updateMsg))
 	}
