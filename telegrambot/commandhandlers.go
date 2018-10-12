@@ -8,7 +8,7 @@ import (
 
 	"github.com/Cryptovinnie/SkycoinWalletBot/internal/utils"
 	"github.com/Cryptovinnie/SkycoinWalletBot/internal/wcconst"
-	log ""
+	
 	"gopkg.in/telegram-bot-api.v4"
 )
 

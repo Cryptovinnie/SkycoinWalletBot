@@ -13,7 +13,7 @@ import (
 
 	"crypto/sha256"
 
-	log ""
+	
 	viper "github.com/spf13/viper"
 )
 
